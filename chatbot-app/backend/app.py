@@ -14,7 +14,7 @@ if backend_dir not in sys.path:
 from config import Config
 from agent import ChatbotAgent
 from services.storage import StorageManager
-from routers import chat, tools, conversation, files, mcp, model, customer, analysis, tool_events, chat_suggestions, charts, session, debug
+from routers import chat, tools, conversation, files, mcp, model, customer, analysis, tool_events, chat_suggestions, charts, session, debug, voice, podcast
 from utils.server import start_server_with_port_management
 from middleware.domain_validation import DomainValidationMiddleware
 from middleware.cookie_security import CookieSecurityMiddleware
@@ -206,6 +206,8 @@ if deployment_env == 'production':
     app.include_router(charts.router, prefix="/api")
     app.include_router(session.router, prefix="/api")
     app.include_router(debug.router, prefix="/api")
+    app.include_router(voice.router, prefix="/api")
+    app.include_router(podcast.router, prefix="/api")
 else:
     # Local development: No prefix (existing behavior)
     app.include_router(chat.router)
@@ -221,6 +223,8 @@ else:
     app.include_router(charts.router)
     app.include_router(session.router)
     app.include_router(debug.router)
+    app.include_router(voice.router)
+    app.include_router(podcast.router)
 
 if __name__ == "__main__":
     start_server_with_port_management("app:app")
