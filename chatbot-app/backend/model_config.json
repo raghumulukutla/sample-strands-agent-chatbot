@@ -30,5 +30,59 @@
   "caching": {
     "enabled": true,
     "description": "Enable prompt caching for improved performance and reduced costs. Automatically adds cache points after tool execution."
+  },
+  "voice": {
+    "enabled": true,
+    "stt": {
+      "service": "transcribe",
+      "language_code": "en-US",
+      "sample_rate": 16000,
+      "enable_partial_results": true,
+      "enable_speaker_diarization": false,
+      "vocabulary_name": null
+    },
+    "tts": {
+      "service": "polly",
+      "voice_id": "Joanna",
+      "engine": "neural",
+      "speaking_rate": "100%",
+      "pitch": "+0%",
+      "output_format": "mp3",
+      "sample_rate": "16000"
+    },
+    "streaming": {
+      "chunk_size_ms": 200,
+      "enable_vad": true,
+      "silence_duration_ms": 1500
+    }
+  },
+  "podcast": {
+    "enabled": true,
+    "transcription": {
+      "service": "transcribe",
+      "enable_speaker_diarization": true,
+      "max_speakers": 10,
+      "language_code": "en-US",
+      "custom_vocabulary": null
+    },
+    "analysis": {
+      "enable_qa_generation": true,
+      "enable_action_items": true,
+      "enable_chapter_detection": true,
+      "summary_lengths": ["quick", "detailed", "executive"],
+      "max_topics": 10
+    },
+    "audio_summary": {
+      "generate_audio": true,
+      "voice_id": "Matthew",
+      "speaking_style": "conversational",
+      "max_duration_seconds": 300,
+      "include_music": false
+    },
+    "storage": {
+      "keep_original_audio": true,
+      "keep_transcription": true,
+      "retention_days": 30
+    }
   }
 }
